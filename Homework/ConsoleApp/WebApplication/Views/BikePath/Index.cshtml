@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ConsoleApp.Models.BikePath>
+
+<h1>全台自行車車道</h1>
+<table>
+    <thead>
+        <tr>
+            <th>簡單的介紹</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                </tr>}
+            }
+
+
+
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>
+
+
+@{
+ }

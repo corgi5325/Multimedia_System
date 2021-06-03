@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp.Services;
+using System;
 
 namespace ConsoleApp
 {
@@ -8,7 +9,7 @@ namespace ConsoleApp
         {
             var XmlService = new ImportXmlService();
 
-            var XmlDatas = XmlService.LoadFormFile(@"C:\Multimedia_System\0318\docs\臺北市政府職缺.xml");
+            var XmlDatas = XmlService.LoadFormFile(Utils.FilePath.GetFullPath("臺北市政府職缺.xml"));
 
             Console.WriteLine(string.Format("分析完成，共有{0}筆資料", XmlDatas.Count)); ;
             XmlDatas.ForEach(x =>
@@ -18,12 +19,12 @@ namespace ConsoleApp
 
             var JsonService = new ImportJsonService();
 
-            var JsonDatas = JsonService.LoadFormFile(@"C:\Multimedia_System\0318\docs\臺中市大坑風景區各登山步道遊客數.TXT");
+            var JsonDatas = JsonService.LoadFormFile(Utils.FilePath.GetFullPath("自行車道.json"));
 
             Console.WriteLine(string.Format("分析完成，共有{0}筆資料", JsonDatas.Count));
             JsonDatas.ForEach(x =>
             {
-                Console.WriteLine(string.Format("時間 :{0} 編號:{1} 人數:{2}", x.DataDate, x.ComplexName,x.FValue));
+                Console.WriteLine(string.Format("自行車道名稱 :{0} 起點地區:{1} 終點地區:{2} 介紹:{3} 地址:{4} 電話:{5} 地圖:{6} 關鍵字:{7}", x.Name, x.S_PlaceDes, x.E_PlaceDes, x.Description, x.Add, x.Tel, x.Map, x.Keyword));
             });
 
             Console.ReadKey();
